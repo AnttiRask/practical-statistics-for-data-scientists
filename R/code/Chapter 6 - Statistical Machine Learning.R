@@ -13,15 +13,15 @@ library(xgboost)
 
 # Define paths to data sets. If you don't keep your data in the same directory as the code, adapt the path names.
 
-PSDS_PATH <- file.path(dirname(dirname(getwd())))
+# PSDS_PATH <- file.path(dirname(dirname(getwd())))
 
-loan200 <- read.csv(file.path(PSDS_PATH, 'data', 'loan200.csv'), stringsAsFactors=TRUE)
+loan200 <- read.csv(file.path('data', 'loan200.csv'), stringsAsFactors=TRUE)
 loan200$outcome <- ordered(loan200$outcome, levels=c('paid off', 'default'))
 
-loan3000 <- read.csv(file.path(PSDS_PATH, 'data', 'loan3000.csv'), stringsAsFactors=TRUE)
+loan3000 <- read.csv(file.path('data', 'loan3000.csv'), stringsAsFactors=TRUE)
 loan3000$outcome <- ordered(loan3000$outcome, levels=c('paid off', 'default'))
 
-loan_data <- read.csv(file.path(PSDS_PATH, 'data', 'loan_data.csv.gz'), stringsAsFactors=TRUE)
+loan_data <- read.csv(file.path('data', 'loan_data.csv.gz'), stringsAsFactors=TRUE)
 loan_data <- select(loan_data, -X, -status)
 loan_data$outcome <- ordered(loan_data$outcome, levels=c('paid off', 'default'))
 
@@ -244,10 +244,10 @@ graph
 # graph <- ggplot(data=rf_df, aes(x=borrower_score, y=payment_inc_ratio, color=prob_default)) +
 #   geom_point(alpha=.6) +
 #   scale_color_gradient2(low='blue', mid='white', high='red', midpoint=.5) +
-#   scale_x_continuous(expand=c(0,0)) + 
-#   scale_y_continuous(expand=c(0,0), lim=c(0, 20)) + 
-#   theme(legend.position='bottom') +
-#   geom_line(data=lda_df0, col='green', size=2, alpha=.8)
+#   scale_x_continuous(expand=c(0,0)) +
+#   scale_y_continuous(expand=c(0,0), lim=c(0, 20)) +
+#   theme(legend.position='bottom')
+  # geom_line(data=lda_df0, col='green', size=2, alpha=.8)
 # graph
 
 # graph
@@ -282,7 +282,7 @@ graph
 # loan_data1 <- loan_data0[,-which(names(loan_data0) %in% 'emp_length')]
 # loan_data1$term = factor(loan_data1$term)
 # loan_data1$emp_length = factor(loan_data1$emp_length>1)
-
+# 
 # params <- data.frame(nodesize = c(5, 15, 25, 5, 10, 25),
 #                      mtry = c(3, 3, 3, 5, 5, 5))
 # rf_list <- vector('list', 6)
@@ -290,7 +290,7 @@ graph
 #   rf_list[[i]] <- randomForest(outcome ~ ., data=loan_data, mtry=params[i, 'mtry'],
 #                                nodesize = params[i,'nodesize'], ntree=100)
 # }
-
+# 
 # rf_list[[1]]$confusion
 
 ## Boosting

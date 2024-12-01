@@ -14,15 +14,15 @@ library(matrixStats)
 
 # Import the datasets needed for chapter 1
 
-PSDS_PATH <- file.path(dirname(dirname(getwd())))
+# PSDS_PATH <- file.path(dirname(dirname(getwd())))
  
-state <- read.csv(file.path(PSDS_PATH, 'data', 'state.csv'))
-dfw <- read.csv(file.path(PSDS_PATH, 'data', 'dfw_airline.csv'))
-sp500_px <- read.csv(file.path(PSDS_PATH, 'data', 'sp500_data.csv.gz'), row.names=1)
-sp500_sym <- read.csv(file.path(PSDS_PATH, 'data', 'sp500_sectors.csv'), stringsAsFactors = FALSE)
-kc_tax <- read.csv(file.path(PSDS_PATH, 'data', 'kc_tax.csv.gz'))
-lc_loans <- read.csv(file.path(PSDS_PATH, 'data', 'lc_loans.csv'))
-airline_stats <- read.csv(file.path(PSDS_PATH, 'data', 'airline_stats.csv'), stringsAsFactors = FALSE)
+state <- read.csv(file.path('data', 'state.csv'))
+dfw <- read.csv(file.path('data', 'dfw_airline.csv'))
+sp500_px <- read.csv(file.path('data', 'sp500_data.csv.gz'), row.names=1)
+sp500_sym <- read.csv(file.path('data', 'sp500_sectors.csv'), stringsAsFactors = FALSE)
+kc_tax <- read.csv(file.path('data', 'kc_tax.csv.gz'))
+lc_loans <- read.csv(file.path('data', 'lc_loans.csv'))
+airline_stats <- read.csv(file.path('data', 'airline_stats.csv'), stringsAsFactors = FALSE)
 airline_stats$airline <- ordered(airline_stats$airline, 
                                  levels=c('Alaska', 'American', 'Jet Blue', 'Delta', 'United', 'Southwest'))
 

@@ -14,11 +14,11 @@ library(rpart)
 
 # Define paths to data sets. If you don't keep your data in the same directory as the code, adapt the path names.
 
-PSDS_PATH <- file.path(dirname(dirname(getwd())))
+# PSDS_PATH <- file.path(dirname(dirname(getwd())))
 
-loan3000 <- read.csv(file.path(PSDS_PATH, 'data', 'loan3000.csv'), stringsAsFactors=TRUE)
-loan_data <- read.csv(file.path(PSDS_PATH, 'data', 'loan_data.csv.gz'), stringsAsFactors=TRUE)
-full_train_set <- read.csv(file.path(PSDS_PATH, 'data', 'full_train_set.csv.gz'), stringsAsFactors=TRUE)
+loan3000 <- read.csv(file.path('data', 'loan3000.csv'), stringsAsFactors=TRUE)
+loan_data <- read.csv(file.path('data', 'loan_data.csv.gz'), stringsAsFactors=TRUE)
+full_train_set <- read.csv(file.path('data', 'full_train_set.csv.gz'), stringsAsFactors=TRUE)
 
 # order the outcome variable
 loan3000$outcome <- ordered(loan3000$outcome, levels=c('paid off', 'default'))
@@ -69,23 +69,23 @@ print(head(pred$posterior))
 
 #### Figure 5.1
 
-# pred <- predict(loan_lda)
-# lda_df <- cbind(loan3000, prob_default=pred$posterior[,'default'])
+pred <- predict(loan_lda)
+lda_df <- cbind(loan3000, prob_default=pred$posterior[,'default'])
 
-# x <- seq(from=.33, to=.73, length=100)
-# y <- seq(from=0, to=20, length=100)
-# newdata <- data.frame(borrower_score=x, payment_inc_ratio=y)
-# pred <- predict(loan_lda, newdata=newdata)
-# lda_df0 <- cbind(newdata, outcome=pred$class)
+x <- seq(from=.33, to=.73, length=100)
+y <- seq(from=0, to=20, length=100)
+newdata <- data.frame(borrower_score=x, payment_inc_ratio=y)
+pred <- predict(loan_lda, newdata=newdata)
+lda_df0 <- cbind(newdata, outcome=pred$class)
 
-# graph <- ggplot(data=lda_df, aes(x=borrower_score, y=payment_inc_ratio, color=prob_default)) +
-#   geom_point(alpha=.6) +
-#   scale_color_gradient2(low='white', high='blue') +
-#   scale_x_continuous(expand=c(0,0)) + 
-#   scale_y_continuous(expand=c(0,0), lim=c(0, 20)) + 
-#   geom_line(data=lda_df0, col='darkgreen', size=2, alpha=.8) +
-#   theme_bw()
-# graph
+graph <- ggplot(data=lda_df, aes(x=borrower_score, y=payment_inc_ratio, color=prob_default)) +
+  geom_point(alpha=.6) +
+  scale_color_gradient2(low='white', high='blue') +
+  scale_x_continuous(expand=c(0,0)) +
+  scale_y_continuous(expand=c(0,0), lim=c(0, 20)) +
+  geom_line(data=lda_df0, col='darkgreen', size=2, alpha=.8) +
+  theme_bw()
+graph
 
 # # [Book]
 # graph
@@ -265,18 +265,18 @@ mean(pred > 0)
 # 
 # The SMOTE implementation in the package `DMwR` works. However `DMwR` is no longer supported.
 
-loan_data_samp <- sample_frac(full_train_set, .05)
+# loan_data_samp <- sample_frac(full_train_set, .05)
 
-# # install.packages('unbalanced')
+# # # install.packages('unbalanced')
 # library(unbalanced)
 # head(full_train_set)
-# smote_data <- ubSMOTE(loan_data_samp, loan_data_samp$outcome, 
+# smote_data <- ubSMOTE(loan_data_samp, loan_data_samp$outcome,
 #                       perc.over = 2000, k = 5, perc.under = 100)
 # head(smote_data)
 
 # install.packages('DMwR')
 # library(DMwR)
-# smote_data <- SMOTE(outcome ~ ., loan_data_samp, 
+# smote_data <- SMOTE(outcome ~ ., loan_data_samp,
 #                     perc.over = 2000, perc.under=100)
 # dim(loan_data_samp)
 # dim(smote_data)

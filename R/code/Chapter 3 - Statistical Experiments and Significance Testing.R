@@ -15,14 +15,13 @@ library(pwr)
 
 # Define paths to data sets. If you don't keep your data in the same directory as the code, adapt the path names.
 
-PSDS_PATH <- file.path(dirname(dirname(getwd())))
+# PSDS_PATH <- file.path(dirname(dirname(getwd())))
 
-
-session_times <- read.csv(file.path(PSDS_PATH, 'data', 'web_page_data.csv'))
+session_times <- read.csv(file.path('data', 'web_page_data.csv'))
 session_times[,2] <- session_times[,2] * 100
-four_sessions  <- read.csv(file.path(PSDS_PATH, 'data', 'four_sessions.csv'))
-click_rate <-  read.csv(file.path(PSDS_PATH, 'data', 'click_rates.csv'))
-imanishi <-  read.csv(file.path(PSDS_PATH, 'data', 'imanishi_data.csv'))
+four_sessions  <- read.csv(file.path('data', 'four_sessions.csv'))
+click_rate <-  read.csv(file.path('data', 'click_rates.csv'))
+imanishi <-  read.csv(file.path('data', 'imanishi_data.csv'))
 
 ## Resampling
 ### Example: Web Stickiness

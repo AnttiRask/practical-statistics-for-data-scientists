@@ -13,12 +13,11 @@ library(splines)
 library(mgcv)
 
 # Define paths to data sets. If you don't keep your data in the same directory as the code, adapt the path names.
+# 
+# PSDS_PATH <- file.path(dirname(dirname(getwd())))
 
-PSDS_PATH <- file.path(dirname(dirname(getwd())))
-
-
-lung <- read.csv(file.path(PSDS_PATH, 'data', 'LungDisease.csv'))
-house <- read.csv(file.path(PSDS_PATH, 'data', 'house_sales.csv'), sep='\t')
+lung <- read.csv(file.path('data', 'LungDisease.csv'))
+house <- read.csv(file.path('data', 'house_sales.csv'), sep='\t')
 
 ## Simple Linear Regression
 ### The Regression Equation

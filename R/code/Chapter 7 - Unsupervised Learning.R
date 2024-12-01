@@ -15,13 +15,13 @@ library(ca)
 
 # Define paths to data sets. If you don't keep your data in the same directory as the code, adapt the path names.
 
-PSDS_PATH <- file.path(dirname(dirname(getwd())))
+# PSDS_PATH <- file.path(dirname(dirname(getwd())))
 
-sp500_px <- read.csv(file.path(PSDS_PATH, 'data', 'sp500_data.csv.gz'), row.names=1)
-sp500_sym <- read.csv(file.path(PSDS_PATH, 'data', 'sp500_sectors.csv'), stringsAsFactors = FALSE)
-loan_data <- read.csv(file.path(PSDS_PATH, 'data', 'loan_data.csv.gz'))
+sp500_px <- read.csv(file.path('data', 'sp500_data.csv.gz'), row.names=1)
+sp500_sym <- read.csv(file.path('data', 'sp500_sectors.csv'), stringsAsFactors = FALSE)
+loan_data <- read.csv(file.path('data', 'loan_data.csv.gz'))
 loan_data$outcome <- ordered(loan_data$outcome, levels=c('paid off', 'default'))
-housetasks <- read.csv(file.path(PSDS_PATH, 'data', 'housetasks.csv'), row.names=1)
+housetasks <- read.csv(file.path('data', 'housetasks.csv'), row.names=1)
 
 ## Principal Components Analysis
 ### A simple example

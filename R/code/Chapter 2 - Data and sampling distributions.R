@@ -9,11 +9,11 @@ library(ggplot2)
 
 # Define paths to data sets. If you don't keep your data in the same directory as the code, adapt the path names.
 
-PSDS_PATH <- file.path(dirname(dirname(getwd())))
+# PSDS_PATH <- file.path(dirname(dirname(getwd())))
 
-loans_income <- read.csv(file.path(PSDS_PATH, 'data', 'loans_income.csv'))
+loans_income <- read.csv(file.path('data', 'loans_income.csv'))
 loans_income <- loans_income[, 1]   # convert data frame to vector
-sp500_px <- read.csv(file.path(PSDS_PATH, 'data', 'sp500_data.csv.gz'), row.names=1)
+sp500_px <- read.csv(file.path('data', 'sp500_data.csv.gz'), row.names=1)
 
 # Figure 2.1
 
